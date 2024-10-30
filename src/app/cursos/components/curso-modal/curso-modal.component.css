@@ -1,0 +1,14 @@
+h2 {
+    font-weight: bold;
+}
+
+.container {
+    padding: 20px;
+    background-color: gainsboro;
+}
+
+.container-v1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

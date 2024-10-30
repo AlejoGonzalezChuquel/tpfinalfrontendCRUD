@@ -1,0 +1,82 @@
+<div class="container">
+
+    <!-- Filtros de búsqueda más pequeños y compactos -->
+    <div class="filters">
+        <div class="filter-option">
+            <h2>Buscar Cursos por Fecha</h2>
+            <div class="form-group">
+                <input type="date" id="fechaFin" [(ngModel)]="fechaFin" class="form-control">
+                <button class="btn btn-primary btn-small" (click)="findCursosByFechaFin()">Buscar</button>
+            </div>
+        </div>
+        <div class="filter-option">
+            <h2>Buscar Curso Vigente por Profesor</h2>
+            <div class="form-group">
+                <input type="number" id="docenteId" [(ngModel)]="docenteId" class="form-control">
+                <button (click)="findAlumnosByDocente()" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <!-- Lista de cursos -->
+    <div class="container-v1">
+        <h3>Lista de Cursos</h3>
+        <button mat-raised-button class="btn btn-dark" (click)="openModalForAdd()">Agregar Curso</button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha de Iniciación</th>
+                <th>Fecha de Finalización</th>
+                <th>Precio</th>
+                <th>Tema</th>
+                <th>Docente</th>
+                <th>Alumnos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let curso of cursos">
+                <td>{{ curso.id }}</td>
+                <td>{{ curso.fechaInicio }}</td>
+                <td>{{ curso.fechaFin }}</td>
+                <td>{{ curso.precio }}</td>
+                <td>{{ curso.tema.nombre }}</td>
+                <td>{{ curso.docente.nombre }}</td>
+                <!-- Alumnos en lista vertical -->
+                <td>
+                    <ul class="alumnos-list">
+                        <li *ngFor="let alumno of curso.alumnos">{{ alumno.nombre }}</li>
+                    </ul>
+                </td>
+                <!-- Botones de acción con iconos -->
+                <td>
+                    <button class="btn btn-warning" (click)="openModalForUpdate(curso)">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    <button class="btn btn-danger" (click)="deleteCurso(curso.id)">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Resultados de búsqueda para cursos y alumnos -->
+    <div class="search-results">
+        <ul *ngIf="cursosFiltrados.length > 0">
+            <li *ngFor="let curso of cursosFiltrados">
+                {{ curso.tema.nombre }}
+            </li>
+        </ul>
+        <p *ngIf="cursosFiltrados.length === 0">No se encontraron cursos para la fecha seleccionada.</p>
+        <hr />
+        <ul *ngIf="alumnosPorCurso.length > 0">
+            <li *ngFor="let alumno of alumnosPorCurso">
+                {{ alumno.nombre }}
+            </li>
+        </ul>
+        <p *ngIf="alumnosPorCurso.length === 0">No se encontraron alumnos para el curso vigente.</p>
+    </div>
+</div>

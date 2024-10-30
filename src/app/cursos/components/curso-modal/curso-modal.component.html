@@ -1,0 +1,42 @@
+<div mat-dialog-content class="container">
+    <h2>Editar Curso</h2>
+
+    <form>
+        <div class="mb-3">
+            <label for="fechaInicio" class="form-label">Fecha de Inicialización</label>
+            <input [(ngModel)]="data.fechaInicio" type="date" class="form-control" name="fechaInicio" id="fechaInicio">
+        </div>
+        <div class="mb-3">
+            <label for="fechaFin" class="form-label">Fecha de Finalización</label>
+            <input [(ngModel)]="data.fechaFin" type="date" class="form-control" name="fechaFin" id="fechaFin">
+        </div>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input [(ngModel)]="data.precio" type="number" class="form-control" name="precio" id="precio">
+        </div>
+        <div class="mb-3">
+            <label for="tema" class="form-label">Tema</label>
+            <select class="form-control" id="tema" [(ngModel)]="data.tema" name="tema" required>
+                <!-- en este caso, el ngValue trackea el valor elegido del select. -->
+                <option *ngFor="let tema of temas" [ngValue]="tema">{{ tema.nombre }}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="docente" class="form-label">Docente</label>
+            <select class="form-control" id="docente" [(ngModel)]="data.docente" name="docente" required>
+                <option *ngFor="let docente of docentes" [ngValue]="docente">{{ docente.nombre }}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="alumnos" class="form-label">Alumnos</label>
+            <select multiple class="form-control" id="alumnos" [(ngModel)]="data.alumnos" name="alumnos" required>
+                <option *ngFor="let alumno of alumnos" [ngValue]="alumno">{{ alumno.nombre }}</option>
+            </select>
+        </div>
+        <div class="container-v1">
+            <button type="button" class="btn btn-success" (click)="onAccept()">Aplicar cambios</button>
+            <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
+        </div>
+    </form>
+
+</div>

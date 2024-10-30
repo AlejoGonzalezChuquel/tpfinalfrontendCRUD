@@ -1,0 +1,50 @@
+button {
+    margin: 0 5px;
+    /* Espacio entre botones */
+    border-width: 2px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bolder;
+}
+
+th,
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.container-v1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Contenedor para alinear botones horizontalmente */
+td .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    /* Espacio entre botones */
+    white-space: nowrap;
+}

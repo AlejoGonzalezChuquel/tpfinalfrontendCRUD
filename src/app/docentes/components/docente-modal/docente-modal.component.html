@@ -1,0 +1,40 @@
+<div class="container p-4 shadow-lg bg-light rounded">
+    <h2 class="text-center text-primary mb-4">Editar Docente</h2>
+    <form>
+        <!-- Campo de Nombre -->
+        <div class="mb-4 position-relative">
+            <label for="nombre" class="form-label fw-bold">Nombre</label>
+            <div class="input-group">
+                <span class="input-group-text bg-primary text-white">
+                    <i class="bi bi-person-fill"></i>
+                </span>
+                <input [(ngModel)]="data.nombre" type="text" class="form-control border-primary" name="nombre"
+                    id="nombre" placeholder="Ingrese el nombre">
+                <!--ngModel es una directiva que enlaza el campo de entrada del formulario y la propiedad data.nombre-->
+                <!--Si el usuario escribe algo en el campo input, este valor se actualiza automáticamente-->
+            </div>
+        </div>
+
+        <!-- Campo de Legajo -->
+        <div class="mb-4 position-relative">
+            <label for="legajo" class="form-label fw-bold">Legajo</label>
+            <div class="input-group">
+                <span class="input-group-text bg-warning text-white">
+                    <i class="bi bi-card-text"></i>
+                </span>
+                <input [(ngModel)]="data.legajo" type="number" class="form-control border-warning" name="legajo"
+                    id="legajo" placeholder="Ingrese el legajo">
+            </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-success btn-lg w-45" (click)="onAccept()">
+                <i class="bi bi-check-circle-fill"></i> Aplicar cambios
+            </button>
+            <button type="button" class="btn btn-danger btn-lg w-45" (click)="onCancel()">
+                <i class="bi bi-x-circle-fill"></i> Cancelar
+            </button>
+        </div>
+    </form>
+</div>
